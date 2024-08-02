@@ -41,9 +41,9 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "/public")));
 app.engine("ejs", ejsMate);
 
-app.get("/", (req, res) => {
-    res.send("hi");
-});
+// app.get("/", (req, res) => {
+//     res.send("hi");
+// });
 
 const sessionOptions = {
     secret: "mysupersecretcode",
