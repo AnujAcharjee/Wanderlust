@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/streets-v12', // style URL
         center: listing.geometry.coordinates, // starting position [lng, lat]
-        zoom: 15 // starting zoom
+        zoom: 11 // starting zoom
     });
 
     // Define the popup content
