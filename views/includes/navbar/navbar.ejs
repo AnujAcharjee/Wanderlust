@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="/css/nav.css">
+
+<nav class="navbar border-bottom sticky-top p-0">
+  <div class="container-fluid">
+    <div class="d-flex flex-wrap align-items-start w-100 mt-0">
+      <!-- Brand Image -->
+      <a class="navbar-brand mx-3 flex-wrap" href="/listings">
+        <i class="fa-solid fa-compass"></i>
+      </a>
+
+      <!-- Nav Options -->
+      <div class="d-flex align-items-center my-0 ms-auto">
+        <a class="nav-link mx-2" href="/listings/new">
+          <b>List your home</b>
+        </a>
+
+        <a class="nav-link mx-3" href="/listings">
+          <i class="fa-solid fa-globe"></i>
+        </a>
+
+        <div class="dropdown mx-3">
+          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-circle-user"></i>
+          </button>
+          <div class="dropdown-menu p-2 mt-2" aria-labelledby="dropdownMenuButton">
+            <% if (!currentUser) { %>
+            <a class=" dropdown-item" aria-current="page" href="/signup">Sing up</a>
+            <a class="dropdown-item" href="/login"> Log in </a>
+            <hr>
+            <a class="dropdown-item" href="/listings">Explore</a>
+            <a class="dropdown-item" href="/listings/new">List your home</a>
+            <% } else { %>
+            <a class="dropdown-item" href="/logout">
+              <p>Log out</p>
+            </a>
+            <hr>
+            <a class="dropdown-item" href="/listings">Explore</a>
+            <a class="dropdown-item" href="/listings/new">List your home</a>
+            <% } %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <%- include("./navSearch.ejs") %>
+
+
+  </div>
+</nav>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

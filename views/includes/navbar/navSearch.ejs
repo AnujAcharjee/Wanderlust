@@ -1,0 +1,21 @@
+<div class="src-bar w-100 m-auto">
+  <form class="src w-100 h-100 d-flex flex-row" role="search" method="POST">
+    <input class="src-options h-100 w-100" type="search" placeholder="Search destinations" list="regions">
+    <datalist id="regions">
+      <option value="I'm flexible">
+      <option value="Europe">
+      <option value="North America">
+      <option value="Southeast Asia">
+      <option value="South America">
+      <option value="Middle East">
+    </datalist>
+    <input class="src-options h-100 w-50" type="text" placeholder="Check in" onfocus="(this.type='date')" onblur="(this.type='text')">
+    <input class="src-options h-100 w-50" type="text" placeholder="Check out" onfocus="(this.type='date')" onblur="(this.type='text')">
+    <input class="src-options h-100 w-100" type="text" placeholder="Add number guests" >
+
+    <button class="btn src-btn h-100 px-3 border-0 rounded-circle" type="submit">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+  </form>
+</div>
+
