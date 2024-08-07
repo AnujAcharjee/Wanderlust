@@ -60,9 +60,25 @@
 .src-btn {
   background-color: #fe424d;
   color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
 }
+.src-text {
+  display: none;
+  color: #fff;
+  text-align:start;
+  font-weight: 700;
+  font-size: 0.75rem;
+  margin-left: 0.3rem;
+}
+
 .src-btn:hover {
   background-color: #f80717;
+  color: #fff;
+  border-radius: 30px;
+}
+.src-btn:hover .src-text {
+  display: block;
 }
 
 @media (max-width: 544px) {

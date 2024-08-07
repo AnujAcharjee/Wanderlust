@@ -1,10 +1,8 @@
-<%- layout("/layouts/boilerplate") %>
+<%- layout("/layouts/boilerplate") %> 
 
-<div class="row row-cols-lg-3 row-cols-md-1 row-cols-sm-1 mt-3">
+<%- include("../includes/filters.ejs") %>
 
-  
-  
-
+<div class="row row-cols-lg-3 row-cols-md-1 row-cols-sm-1 mt-2">
   <% for(let listing of allListings) { %>
   <a href="/listings/<%= listing._id %>" class="listing-link">
     <div class="card col listing-card">
