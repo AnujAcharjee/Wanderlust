@@ -1,7 +1,7 @@
 <div class="src-bar w-100 m-auto">
   <form class="src w-100 h-100 d-flex flex-row" role="search" method="POST">
-    <input class="src-options h-100 w-100" type="search" placeholder="Search destinations" list="regions">
-    <datalist id="regions">
+    <input class="src-options h-100 w-100" type="search" list="datalistOptions" id="exampleDataList" placeholder="Search destinations" list="regions">
+    <datalist id="datalistOptions" id="regions">
       <option value="I'm flexible">
       <option value="Europe">
       <option value="North America">
@@ -11,7 +11,7 @@
     </datalist>
     <input class="src-options h-100 w-50" type="text" placeholder="Check in" onfocus="(this.type='date')" onblur="(this.type='text')">
     <input class="src-options h-100 w-50" type="text" placeholder="Check out" onfocus="(this.type='date')" onblur="(this.type='text')">
-    <input class="src-options h-100 w-100" type="text" placeholder="Add guests" >
+    <input class="src-options h-100 w-100" type="data" placeholder="Add guests" >
 
     <button class="btn src-btn px-3 py-2 m-2 border-0 d-flex aling-item-center " type="submit">
         <i class="fa-solid fa-magnifying-glass"></i>
