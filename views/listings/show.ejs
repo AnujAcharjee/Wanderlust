@@ -1,20 +1,5 @@
 <%- layout("/layouts/boilerplate") %>
 
-<style>
-  .card-body {
-    border: none;
-  }
-  .posted-review .card-title {
-    font-size: 16px; 
-  }
-  .posted-review .card-text {
-    font-size: 14px; 
-  }
-  .posted-review .starability-result {
-    font-size: 14px !important;
-  }
-</style>
-
 <script>
   let mapToken = "<%= process.env.MAP_TOKEN %>";
   let listing = <%- JSON.stringify(listing) %>;
@@ -25,7 +10,7 @@
 
     <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="<%= listing.image.filename %>">
 
-    <div class="show-info card-text border py-2 px-3 mt-2 ">
+    <div class="show-info card-text border py-2 px-3 mt-2">
       <h3>
         <%= listing.title %>
       </h3>
@@ -39,19 +24,19 @@
         Price: <b> &#x20B9; <%= listing.price.toLocaleString("en-IN") %> </b>
       </p>
       <p>
-        Location: <%= listing.location %> || <%= listing.country %>
+        Location: <%= listing.location %>, <%= listing.country %>
       </p>
+
+      <% if(currentUser && currentUser._id.equals(listing.owner._id)) { %>
+        <div class="btns mb-2 d-flex justify-content-end">
+          <a href="/listings/<%=listing._id%>/edit" class="btn btn-dark add-btn px-3">Edit</a>
+          <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+            <button type="submit" class="btn btn-dark mx-4">Delete</button>
+          </form>
+        </div>
+        <% } %>
     </div>
   </div>
-
-  <% if(currentUser && currentUser._id.equals(listing.owner._id)) { %>
-  <div class="btns mb-3 p-1">
-    <a href="/listings/<%=listing._id%>/edit" class="btn btn-dark col-2 offset-3 add-btn">Edit</a>
-    <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
-      <button type="submit" class="btn btn-dark clo-2 offset-7">Delete</button>
-    </form>
-  </div>
-  <% } %>
 </div>
 
 <div class="col-10 offset-1">
@@ -75,7 +60,7 @@
       </fieldset>
     </div>
     <div class="form-floating">
-      <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" cols="38" rows="5" required></textarea>
+      <textarea name="review[comment]" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" cols="38" rows="5" required></textarea>
       <label for="floatingTextarea2">Comment</label>
       <div class="invalid-feedback">Please add some comments for review</div>
     </div>
@@ -91,20 +76,22 @@
     <% for (review of listing.reviews) { %>
     <div class="card col-14 offset-1 ms-1 posted-review">
       <div class="card-body my-1">
-        <div class="d-flex">
+        <div class="d-flex mx-2">
           <h5 class="card-title">
             @<%= review.author.username %>
           </h5>
-          <div class="starability-result mx-2" data-rating="<%= review.rating %>"></div>
+          <div class="mx-2 w-100"><i class="fa-solid fa-star"></i><%= review.rating %></div>
           <% if(currentUser && currentUser._id.equals(review.author._id)) { %>
-          <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" class="mb-1">
-            <button class="btn btn-sm btn-dark">Delete</button>
-          </form>
+          <div class="w-100 d-flex justify-content-end">
+            <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" class="mb-1">
+              <button class="btn btn-sm btn-delete">Delete</button>
+            </form>
+          </div>
           <% } %>
         </div>
         <p class="card-text">
           <%= review.comment %>
-        </p>   
+        </p>
       </div>
     </div>
     <% } %>

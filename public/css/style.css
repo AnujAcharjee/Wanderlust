@@ -1,135 +1,170 @@
 body {
-    font-family: "Plus Jakarta Sans", sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .container {
-    flex: 1;
+  flex: 1;
 }
-
 
 /* Footer */
 .f-info-links a {
-    text-decoration: none;
-    color: #222222;
+  text-decoration: none;
+  color: #222222;
 }
 
 .f-info-links a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-.f-info-links, .f-info-socials, .f-info-brand {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .f-info-socials i {
-    font-size: 1.2rem;
-    margin-right: 1rem;
+  font-size: 1.2rem;
+  margin-right: 1rem;
 }
 
 .f-info {
-    text-align: center;
-    height: 8rem;
-    background-color: #ebebeb;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: space-evenly;
+  text-align: center;
+  height: 8rem;
+  background-color: #ebebeb;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: space-evenly;
 }
 
 /* Cards */
 .listing-card {
-    border: none;
-    margin-bottom: 2rem;
+  border: none;
+  margin-bottom: 2rem;
 }
 
 .card-img-top {
-    border-radius: 1rem;
-    width: 100%;
-    object-fit: cover;
+  border-radius: 1rem;
+  width: 100%;
+  object-fit: cover;
 }
 
 .card-body {
-    padding: 0;
+  padding: 0;
 }
 
 .card-text {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .listing-link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* Card Effect */
 .card-img-overlay {
-    opacity: 0;
+  opacity: 0;
 }
 
 .card-img-overlay:hover {
-    opacity: 0.2;
-    background-color: white;
+  opacity: 0.2;
+  background-color: white;
 }
-
 
 /* button */
 .add-btn {
-    background-color: #fe424d;
-    color: #fff;
-    border: none;
+  background-color: #fe424d;
+  color: #fff;
+  border: none;
 }
 .add-btn:hover {
-    background-color: #ee6770;
+  background-color: #ee6770;
 }
 
 /* Show page */
 .show-img {
-    height: 60vh;
+  height: 60vh;
 }
 
 .btns {
-    display: flex;
+  display: flex;
 }
 
 .show-card {
-    padding-left: 0;
-    padding-right: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .show-info {
-    border-radius: 25px;
-    font-weight: 500;
-    box-shadow: 0 0 3px 0 black;
+  border-radius: 25px;
+  font-weight: 500;
+  box-shadow: 0 0 3px 0 black;
+}
+.posted-review .card-title {
+  font-size: 16px;
+}
+
+.posted-review .card-text {
+  font-size: 14px;
+}
+
+.btn-delete {
+  background-color: rgb(202, 205, 207);
+  color: rgb(146, 146, 146);
 }
 
 /* Map */
 #map {
-    height: 350px;
-    box-shadow: 0 0 3px 0 black;
-    border-radius: 10px;
+  height: 350px;
+  box-shadow: 0 0 3px 0 black;
+  border-radius: 10px;
 }
 
 #marker {
-    background-image: url('/images/map-pointer.jpg');
-    background-size: cover;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
+  background-image: url("/images/map-pointer.jpg");
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .mapboxgl-Popup {
-    max-width: 200px;
+  max-width: 200px;
 }
 
 @media (max-width: 900px) {
-    #marker {
-        width: 20px;
-        height: 20px;
-    }
+  #marker {
+    width: 20px;
+    height: 20px;
   }
+}
+
+ /* new & edit form filter */
+ .filter-categories {
+  height: 20vh;
+  overflow-y: auto;
+}
+
+.filter-categories-inpt1 {
+  border-right: 1px solid rgb(223, 216, 216);
+}
+
+/* Edit page */
+#edit-original-img {
+  width: 100%; 
+  max-width: 500px; 
+}
+
+@media (max-width: 700px) {
+  #edit-original-img {
+    width: 80%; 
+    max-width: 300px; 
+  }
+}

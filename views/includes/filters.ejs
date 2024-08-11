@@ -60,7 +60,7 @@
   }
 
   .scroll-btn {
-    display: none; 
+    display: none;
     margin: 2.1rem 4px auto 4px;
     background-color: white;
     border: 0.5px solid rgb(131, 130, 130);
@@ -71,9 +71,9 @@
 
   @media (min-width: 900px) {
     .scroll-btn {
-      display:inline-block;
+      display: inline-block;
+    }
   }
-}
 </style>
 
 <div class="d-flex">
@@ -82,23 +82,77 @@
   </button>
 
   <div class="filters w-100 py-2 mb-2 d-flex align-items-center">
-    <a class="filter-item"><i class="fa-solid fa-water-ladder"></i><p>Amazing Pools</p></a> 
-    <a class="filter-item"><i class="fa-solid fa-campground"></i><p>Camping</p></a>
-    <a class="filter-item"><i class="fa-solid fa-city"></i><p>Iconic Cities</p></a>
-    <a class="filter-item"><i class="fa-solid fa-mountain-sun"></i><p>Mountains</p></a>
-    <a class="filter-item"><i class="fa-brands fa-fort-awesome"></i><p>Castles</p></a>
-    <a class="filter-item"><i class="fa-solid fa-fire"></i><p>Trending</p></a>
-    <a class="filter-item"><i class="fa-solid fa-gem"></i><p>Luex</p></a>
-    <a class="filter-item"><i class="fa-solid fa-tractor"></i><p>Farms</p></a>
-    <a class="filter-item"><i class="fa-solid fa-person-skiing"></i><p>Ski-in/out</p></a>
-    <a class="filter-item"><i class="fa-solid fa-umbrella-beach"></i><p>Beach</p></a>
-    <a class="filter-item"><i class="fa-solid fa-tower-observation"></i><p>Tower</p></a>
-    <a class="filter-item"><i class="fa-solid fa-palette"></i><p>Creative</p></a>
-    <a class="filter-item"><i class="fa-solid fa-tree"></i><p>Tropical</p></a>
-    <a class="filter-item"><i class="fa-solid fa-wheelchair-move"></i><p>Adapted</p></a>
-    <a class="filter-item"><i class="fa-solid fa-ship"></i><p>Houseboats</p></a>
-    <a class="filter-item"><i class="fa-regular fa-snowflake"></i><p>Arctic</p></a>
-    <a class="filter-item"><i class="fa-solid fa-igloo"></i><p>Igloo</p></a>
+    <form id="filterForm" action="/listings/filter" method="GET">
+      <button type="submit" name="category" value="Amazing Pools" class="filter-item btn">
+        <i class="fa-solid fa-water-ladder"></i>
+        <p>Amazing Pools</p>
+      </button>
+      <button type="submit" name="category" value="Camping" class="filter-item btn">
+        <i class="fa-solid fa-campground"></i>
+        <p>Camping</p>
+      </button>
+      <button type="submit" name="category" value="Iconic Cities" class="filter-item btn">
+        <i class="fa-solid fa-city"></i>
+        <p>Iconic Cities</p>
+      </button>
+      <button type="submit" name="category" value="Mountains" class="filter-item btn">
+        <i class="fa-solid fa-mountain-sun"></i>
+        <p>Mountains</p>
+      </button>
+      <button type="submit" name="category" value="Castles" class="filter-item btn">
+        <i class="fa-brands fa-fort-awesome"></i>
+        <p>Castles</p>
+      </button>
+      <button type="submit" name="category" value="Trending" class="filter-item btn">
+        <i class="fa-solid fa-fire"></i>
+        <p>Trending</p>
+      </button>
+      <button type="submit" name="category" value="Luxe" class="filter-item btn">
+        <i class="fa-solid fa-gem"></i>
+        <p>Luxe</p>
+      </button>
+      <button type="submit" name="category" value="Farms" class="filter-item btn">
+        <i class="fa-solid fa-tractor"></i>
+        <p>Farms</p>
+      </button>
+      <button type="submit" name="category" value="Ski-in/out" class="filter-item btn">
+        <i class="fa-solid fa-person-skiing"></i>
+        <p>Ski-in/out</p>
+      </button>
+      <button type="submit" name="category" value="Beach" class="filter-item btn">
+        <i class="fa-solid fa-umbrella-beach"></i>
+        <p>Beach</p>
+      </button>
+      <button type="submit" name="category" value="Tower" class="filter-item btn">
+        <i class="fa-solid fa-tower-observation"></i>
+        <p>Tower</p>
+      </button>
+      <button type="submit" name="category" value="Creative" class="filter-item btn">
+        <i class="fa-solid fa-palette"></i>
+        <p>Creative</p>
+      </button>
+      <button type="submit" name="category" value="Tropical" class="filter-item btn">
+        <i class="fa-solid fa-tree"></i>
+        <p>Tropical</p>
+      </button>
+      <button type="submit" name="category" value="Adapted" class="filter-item btn">
+        <i class="fa-solid fa-wheelchair-move"></i>
+        <p>Adapted</p>
+      </button>
+      <button type="submit" name="category" value="Houseboats" class="filter-item btn">
+        <i class="fa-solid fa-ship"></i>
+        <p>Houseboats</p>
+      </button>
+      <button type="submit" name="category" value="Arctic" class="filter-item btn">
+        <i class="fa-regular fa-snowflake"></i>
+        <p>Arctic</p>
+      </button>
+      <button type="submit" name="category" value="Igloo" class="filter-item btn">
+        <i class="fa-solid fa-igloo"></i>
+        <p>Igloo</p>
+      </button>
+    </form>
+
   </div>
 
   <button class="scroll-btn rounded-circle px-2" onclick="scrollFilters(1)">
@@ -107,6 +161,7 @@
 </div>
 
 <script>
+  // scrolling of filters
   function scrollFilters(direction) {
     const filters = document.querySelector('.filters');
     const scrollAmount = 200;

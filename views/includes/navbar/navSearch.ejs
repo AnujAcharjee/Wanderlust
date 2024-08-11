@@ -1,17 +1,18 @@
 <div class="src-bar w-100 m-auto">
-  <form class="src w-100 h-100 d-flex flex-row" role="search" method="POST">
-    <input class="src-options h-100 w-100" type="search" list="datalistOptions" id="exampleDataList" placeholder="Search destinations" list="regions">
-    <datalist id="datalistOptions" id="regions">
-      <option value="I'm flexible">
+  <form action="/listings/search" method="GET" role="search" class="src w-100 h-100 d-flex flex-row" >
+    <input name="region" class="src-options h-100 w-100" type="search" list="datalistOptions" id="exampleDataList" placeholder="Search destinations" list="regions">
+    <datalist id="datalistOptions">
       <option value="Europe">
       <option value="North America">
       <option value="Southeast Asia">
+      <option value="East Asia">
       <option value="South America">
       <option value="Middle East">
     </datalist>
-    <input class="src-options h-100 w-50" type="text" placeholder="Check in" onfocus="(this.type='date')" onblur="(this.type='text')">
-    <input class="src-options h-100 w-50" type="text" placeholder="Check out" onfocus="(this.type='date')" onblur="(this.type='text')">
-    <input class="src-options h-100 w-100" type="data" placeholder="Add guests" >
+    <input name="check_in" class="src-options h-100 w-50" type="text" placeholder="Check in" onfocus="(this.type='date')" onblur="(this.type='text')">
+    <input name="check_out" class="src-options h-100 w-50" type="text" placeholder="Check out" onfocus="(this.type='date')" onblur="(this.type='text')">
+    <input name="guests" class="src-options h-100 w-100" type="text" placeholder="Add guests" >
+    
 
     <button class="btn src-btn px-3 py-2 m-2 border-0 d-flex aling-item-center " type="submit">
         <i class="fa-solid fa-magnifying-glass"></i>

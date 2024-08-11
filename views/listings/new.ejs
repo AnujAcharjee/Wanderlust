@@ -6,50 +6,87 @@
     <h3>Create a new list</h3>
     <br>
     <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
-      <div class="mb-3">
+      <div class="mb-4">
         <label for="title" class="form-label">Title</label>
         <input name="listing[title]" type="text" placeholder="enter title" class="form-control" required>
         <div class="valid-feedback">Great title!</div>
       </div>
-      <br><br>
-      <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea name="listing[description]" placeholder="enter description" class="form-control" required>
-                    </textarea>
+
+      <div class="form-group mb-4">
+        <label for="exampleFormControlTextarea1">Description</label>
+        <textarea name="listing[description]" class="form-control" id="exampleFormControlTextarea1" placeholder="enter description" rows="3" required></textarea>
         <div class="invalid-feedback">Please enter short description</div>
       </div>
-      <br><br>
-      <div class="mb-3">
+
+      <div class="mb-4">
         <label for="image" class="form-label">Upload image</label>
         <input name="listing[image]" type="file" class="form-control">
         <div class="invalid-feedback">Please enter valid image url</div>
       </div>
-      <br><br>
-      <div class="mb-3">
+
+      <div class="mb-4">
         <label for="price" class="form-label">Price</label>
         <input name="listing[price]" type="number" placeholder="enter price in number" class="form-control" required>
         <div class="invalid-feedback">Please enter valid price</div>
       </div>
-      <br><br>
-      <div class="row">
-        <div class="mb-3 col-md-4">
+
+      <div class="row mb-4">
+        <div class="mb-2 col-md">
           <label for="location" class="form-label">Location</label>
-          <input name="listing[location]" type="text" placeholder="city, state" class="form-control" required>
+          <input name="listing[location]" type="text" placeholder="enter city, state" class="form-control" required>
           <div class="invalid-feedback">Please enter valid location</div>
         </div>
-        <br><br>
-        <div class="mb-3 col-md-7">
+
+        <div class="mb-2 col-md">
           <label for="country" class="form-label">Country</label>
           <input name="listing[country]" type="text" placeholder="enter country name" class="form-control" required>
           <div class="invalid-feedback">Please enter valid country name</div>
         </div>
+        <div class="mb-2">
+          <label for="region" class="form-label">Region</label><br>
+          <select name="listing[region]" class="custom-select form-control border" id="inputGroupSelect01" required>
+            <option selected></option>
+            <option value="europe">Europe</option>
+            <option value="north america">North America</option>
+            <option value="southeast asia">Southeast Asia</option>
+            <option value="east asia">East Asia</option>
+            <option value="south america">South America</option>
+            <option value="middle east">Middle East</option>
+          </select>
+          <div class="invalid-feedback">Please select a option</div>
+        </div>
       </div>
 
-      <br><br>
-      <button class="btn btn-dark add-btn">Add</button>
-      <br><br>
+      <div class="mb-2">
+        <div class="form-group">
+          <label class="mb-1">Categories</label>
+          <div class="form-control filter-categories row d-flex">
+            <div class="col-6 filter-categories-inpt1">
+              <label class="d-block"><input type="checkbox" name="listing[categories]" value="amazing pools"> Amazing Pools</label>
+              <label class="d-block"><input type="checkbox" name="listing[categories]" value="camping"> Camping</label>
+              <label class="d-block"><input type="checkbox" name="listing[categories]" value="iconic cities"> Iconic Cities</label>
+              <label class="d-block"><input type="checkbox" name="listing[categories]" value="mountains"> Mountains</label>
+              <label class="d-block"><input type="checkbox" name="listing[categories]" value="castles"> Castles</label>
+              <label class="d-block"><input type="checkbox" name="listing[categories]" value="trending"> Trending</label>
+              <label class="d-block"><input type="checkbox" name="listing[categories]" value="luxury"> Luex</label>
+              <label class="d-block"><input type="checkbox" name="listing[categories]" value="farms"> Farms</label>
+              <label class="d-block"><input type="checkbox" name="listing[categories]" value="ski-in/out"> Ski-in/out</label>
+            </div>
+            <div class="col-6 filter-listing[categories]-inpt2">
+              <label class="d-block"><input type="checkbox" name="listing[categories]" value="beach"> Beach</label>
+              <label class="d-block"><input type="checkbox" name="listing[categories]" value="tower"> Tower</label>
+              <label class="d-block"><input type="checkbox" name="listing[categories]" value="creative"> Creative</label>
+              <label class="d-block"><input type="checkbox" name="listing[categories]" value="tropical"> Tropical</label>
+              <label class="d-block"><input type="checkbox" name="listing[categories]" value="adapted"> Adapted</label>
+              <label class="d-block"><input type="checkbox" name="listing[categories]" value="houseboats"> Houseboats</label>
+              <label class="d-block"><input type="checkbox" name="listing[categories]" value="arctic"> Arctic</label>
+              <label class="d-block"><input type="checkbox" name="listing[categories]" value="igloo"> Igloo</label>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <button class="btn btn-dark add-btn mb-4">Add</button>
     </form>
-
   </div>
 </div>
