@@ -65,6 +65,17 @@
   padding: 0 1rem;
   border: none;
 }
+.src select {
+  padding: 0 1rem;
+  appearance: none;
+  border: none;
+}
+.src select option {
+  font-size: medium;
+  padding: 2rem;
+  margin: 1rem;
+}
+
 
 .src-options {
   border-radius: 2rem;
@@ -116,5 +127,8 @@
   }
   #nav-globe {
     display: none;
+  }
+  .src-options {
+    font-size: 0.5rem;
   }
 }
