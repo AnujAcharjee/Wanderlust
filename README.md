@@ -17,5 +17,7 @@ Wanderlust is a web application designed for discovering and listing travel dest
 - Express.js
 - MongoDB
 - HTML, CSS, JS
+- Cloudinary
+- MapBox
 
 
