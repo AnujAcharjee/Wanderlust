@@ -2,6 +2,7 @@ const Listing = require("../models/listing.js");
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
+const { cloudinary } = require("../cloudConfig.js");
 
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({});
@@ -47,10 +48,12 @@ module.exports.createListing = async (req, res) => {
   let url = req.file.path;
   let filename = req.file.filename;
 
+  // manual Cloudinary upload
+  const result = await cloudinary.uploader.upload(url);
+
   const newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
   newListing.image = { url, filename };
-
   newListing.geometry = response.body.features[0].geometry;
 
   let savedListing = await newListing.save();
@@ -107,10 +110,10 @@ module.exports.search = async (req, res) => {
 module.exports.filter = async (req, res) => {
   const category = req.query.category.toLowerCase();
   const allListings = await Listing.find({ categories: category });
-  
+
   if (allListings.length === 0) {
     req.flash("error", "Listing not found! Try another filter.");
-    return res.redirect("/listings"); 
+    return res.redirect("/listings");
   } else {
     res.render("listings/index.ejs", { allListings });
   }

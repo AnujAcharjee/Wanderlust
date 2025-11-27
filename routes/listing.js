@@ -9,8 +9,9 @@ const {
 const listingController = require("../controllers/listings.js");
 const Listing = require("../models/listing.js");
 const multer = require("multer");
-const { storage } = require("../cloudConfig.js");
-const upload = multer({ storage });
+
+
+const upload = multer({ dest: "uploads/" });
 
 // Search route
 router.get("/search", isLoggedIn, wrapAsync(listingController.search));
