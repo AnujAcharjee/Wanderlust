@@ -1,4 +1,3 @@
-const { default: createCloudinaryStorage } = require("multer-storage-cloudinary");
 const Listing = require("../models/listing.js");
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapToken = process.env.MAP_TOKEN;
@@ -55,7 +54,7 @@ module.exports.createListing = async (req, res) => {
   newListing.geometry = response.body.features[0].geometry;
 
   let savedListing = await newListing.save();
-  console.log(savedListing);
+  // console.log(savedListing);
 
   req.flash("success", "New Listing Created!");
   res.redirect("/listings");
@@ -93,7 +92,7 @@ module.exports.updateListing = async (req, res) => {
 module.exports.destroyListing = async (req, res) => {
   let { id } = req.params;
   let deletedListing = await Listing.findByIdAndDelete(id);
-  console.log(deletedListing);
+  // console.log(deletedListing);
 
   req.flash("success", "New Listing Deleted!");
   res.redirect("/listings");
