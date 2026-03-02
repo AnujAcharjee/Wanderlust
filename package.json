@@ -1,10 +1,10 @@
 {
-  "name": "trraveldestination",
+  "name": "wanderlust",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "Anuj Acharjee",
@@ -22,8 +22,8 @@
     "express-session": "^1.18.0",
     "joi": "^17.13.3",
     "method-override": "^3.0.0",
-    "mongodb": "^6.8.0",
-    "mongoose": "^8.5.2",
+    "mongodb": "^6.21.0",
+    "mongoose": "^8.23.0",
     "multer": "^1.4.5-lts.1",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
