@@ -2,7 +2,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const Listing = require("../models/listing");
 
-const MONGO_URL = process.env.MONGO_ATLAS_URI;
+const MONGO_URL = process.env.MONGO_ATLAS_URI || "mongodb://localhost:27017/travelbnb-dev";
 
 main()
   .then(() => console.log("DB Connected"))
@@ -18,7 +18,7 @@ const sampleListings = [
     description:
       "Wake up to ocean waves in this stunning beachfront villa with private pool and sunset views.",
     image: {
-      url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+      url: "https://imgs.search.brave.com/dB5Bzws-Ntr1SwWFNK-4ZOaKg2RCXKK8TFmwHRBWBf4/rs:fit:860:0:0:0/g:ce/aHR0cDovL21haXNv/bjl2aWxsYS5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMjQv/MDkvVmlsbGFzLWlu/LUdvYS1mb3ItR3Jv/dXAtU3RheS0xMDI0/eDY4Mi5qcGVn",
       filename: "listingimage",
     },
     price: 8500,

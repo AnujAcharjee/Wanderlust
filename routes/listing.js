@@ -6,12 +6,9 @@ const {
   isLoggedIn,
   checkOwner,
 } = require("../middlewares.js");
+const { upload } = require("../utils/upload.js");
+
 const listingController = require("../controllers/listings.js");
-const Listing = require("../models/listing.js");
-const multer = require("multer");
-
-
-const upload = multer({ dest: "uploads/" });
 
 // Search route
 router.get("/search", isLoggedIn, wrapAsync(listingController.search));
@@ -26,7 +23,7 @@ router
   //Create Route
   .post(
     isLoggedIn,
-    upload.single("listing[image]"),
+    upload.single("image"),
     validateListing,
     wrapAsync(listingController.createListing)
   );
@@ -46,7 +43,7 @@ router
   .put(
     isLoggedIn,
     checkOwner,
-    upload.single("listing[image]"),
+    upload.single("image"),
     validateListing,
     wrapAsync(listingController.updateListing)
   )
