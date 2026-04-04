@@ -1,22 +1,44 @@
-<div class="src-bar w-100 m-auto">
-  <form action="/listings/search" method="GET" role="search" class="src w-100 h-100 d-flex flex-row" >
-    <select name="region" class="src-options h-100 w-100">
-      <option value="" disabled selected>Select a region</option>
-      <option value="Europe">Europe</option>
-      <option value="North America">North America</option>
-      <option value="Southeast Asia">Southeast Asia</option>
-      <option value="East Asia">East Asia</option>
-      <option value="South America">South America</option>
-      <option value="Middle East">Middle East</option>
-    </select>
-    <input name="check_in" class="src-options h-100 w-50" type="text" placeholder="Check in" onfocus="(this.type='date')" onblur="(this.type='text')">
-    <input name="check_out" class="src-options h-100 w-50" type="text" placeholder="Check out" onfocus="(this.type='date')" onblur="(this.type='text')">
-    <input name="guests" class="src-options h-100 w-100" type="text" placeholder="Add guests" >
+<div class="search-wrap">
+  <p class="eyebrow">Where to next?</p>
+  <form action="/listings/search" method="GET" role="search">
+    <div class="search-card">
 
-    <button class="btn src-btn px-3 py-2 m-2 border-0 d-flex aling-item-center " type="submit">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <b class="src-text">Search</b>
-    </button>
+      <div class="field region">
+        <span class="field-label">Region</span>
+        <select name="region" aria-label="Select a region">
+          <option value="" disabled selected>Anywhere</option>
+          <option value="Europe">Europe</option>
+          <option value="North America">North America</option>
+          <option value="Southeast Asia">Southeast Asia</option>
+          <option value="East Asia">East Asia</option>
+          <option value="South America">South America</option>
+          <option value="Middle East">Middle East</option>
+        </select>
+      </div>
+
+      <div class="field date">
+        <span class="field-label">Check in</span>
+        <input name="check_in" type="text" placeholder="Add date" onfocus="this.type='date'" onblur="if(!this.value) this.type='text'" aria-label="Check in date">
+      </div>
+
+      <div class="field date">
+        <span class="field-label">Check out</span>
+        <input name="check_out" type="text" placeholder="Add date" onfocus="this.type='date'" onblur="if(!this.value) this.type='text'" aria-label="Check out date">
+      </div>
+
+      <div class="field guests">
+        <span class="field-label">Guests</span>
+        <input name="guests" type="number" min="1" placeholder="Add guests" aria-label="Number of guests">
+      </div>
+
+      <button class="search-btn" type="submit" aria-label="Search">
+        <svg viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7" />
+          <line x1="16.5" y1="16.5" x2="22" y2="22" />
+        </svg>
+        Search
+      </button>
+
+    </div>
   </form>
 </div>
-

@@ -1,54 +1,47 @@
 <nav class="navbar border-bottom sticky-top p-0">
-  <div class="container-fluid">
-    <div class="d-flex flex-wrap align-items-start w-100 mt-0">
-      <!-- Brand Image -->
-      <a class="navbar-brand mx-2" href="/listings">
-        <img id="brand-img" src="/images/logo.png">
-      </a>
-      <a class="navbar-brand mx-2" href="/listings">
-        <img id="brand-name" src="/images/logo name.jpeg">
+  <div class="container-fluid px-3">
+
+    <!-- Top row: brand + options -->
+    <div class="d-flex align-items-center justify-content-between w-100 py-2">
+      <a class="navbar-brand m-0" href="/listings">
+        <img id="brand-name" src="/images/brand-name.svg" alt="Brand Name">
       </a>
 
-      <!-- Nav Options -->
-      <div class="d-flex align-items-center my-0 ms-auto">
-        <a class="nav-link mx-2" href="/listings/new">
-          <b>List your home</b>
-        </a>
-        <a class="nav-link px-2 mx-3" id="nav-globe" href="/listings">
-          <i class="fa-solid fa-globe"></i>
-        </a>
 
-        <div class="dropdown mx-3">
-          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+      <div class="d-flex align-items-center gap-2">
+        <a class="nav-link" href="/listings/new"><b>List your home</b></a>
+        <div class="dropdown">
+          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa-solid fa-bars"></i>
             <i class="fa-solid fa-circle-user"></i>
           </button>
-          <div class="dropdown-menu p-2 mt-2" aria-labelledby="dropdownMenuButton">
+          <ul class="dropdown-menu dropdown-menu-end p-2 mt-2" aria-labelledby="dropdownMenuButton">
             <% if (!currentUser) { %>
-            <a class=" dropdown-item" aria-current="page" href="/signup">Sing up</a>
-            <a class="dropdown-item" href="/login"> Log in </a>
-            <hr>
-            <a class="dropdown-item" href="/listings">Explore</a>
-            <a class="dropdown-item" href="/listings/new">List your home</a>
+            <li><a class="dropdown-item" href="/signup">Sign up</a></li>
+            <li><a class="dropdown-item" href="/login">Log in</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="/listings">Explore</a></li>
+            <li><a class="dropdown-item" href="/listings/new">List your home</a></li>
             <% } else { %>
-            <a class="dropdown-item" href="/logout">
-              <p>Log out</p>
-            </a>
-            <hr>
-            <a class="dropdown-item" href="/listings">Explore</a>
-            <a class="dropdown-item" href="/listings/new">List your home</a>
+            <li><a class="dropdown-item" href="/logout">Log out</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="/listings">Explore</a></li>
+            <li><a class="dropdown-item" href="/listings/new">List your home</a></li>
             <% } %>
-          </div>
+          </ul>
         </div>
-
       </div>
     </div>
 
-    <%- include("./navSearch.ejs") %>
-
+    <!-- Bottom row: search bar -->
+    <div class="navbar-search-row">
+      <%- include("./navSearch.ejs") %>
+    </div>
 
   </div>
 </nav>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

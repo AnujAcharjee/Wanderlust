@@ -1,170 +1,82 @@
-<style>
-  .filters {
-    background-color: #fff;
-    overflow-x: auto;
-    white-space: nowrap;
-    scroll-behavior: smooth;
-    position: relative;
-    box-shadow: inset 3px 0 6px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-  }
-
-  .filter-item {
-    text-decoration: none;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    border-radius: 1.5rem;
-    margin-right: 0.5rem;
-    padding: 0.5rem 0.8rem;
-    cursor: pointer;
-    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.2s, transform 0.2s;
-  }
-
-  .filter-item:hover {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-    background-color: rgb(233, 231, 231);
-  }
-
-  .filter-item:active {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    transform: translateY(0);
-  }
-
-  .filter-item i {
-    font-size: 1rem;
-    margin-bottom: 0.3rem;
-    color: rgb(95, 94, 94);
-  }
-
-  .filter-item p {
-    margin: 0;
-    font-size: 0.8rem;
-    text-align: center;
-    font-weight: 400;
-    color: rgb(95, 94, 94);
-  }
-
-  /* Custom scrollbar styles for Webkit-based browsers */
-  .filters::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Custom scrollbar styles for Firefox */
-  .filters {
-    scrollbar-width: none;
-  }
-
-  .scroll-btn {
-    display: none;
-    margin: 2.1rem 4px auto 4px;
-    background-color: white;
-    border: 0.5px solid rgb(131, 130, 130);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transform: translateY(-50%);
-  }
-
-  @media (min-width: 900px) {
-    .scroll-btn {
-      display: inline-block;
-    }
-  }
-</style>
-
-<div class="d-flex">
-  <button class="scroll-btn rounded-circle px-2" onclick="scrollFilters(-1)">
+<div class="filters-wrapper">
+  <button class="scroll-btn" id="scrollLeft" onclick="scrollFilters(-1)" aria-label="Scroll left">
     <i class="fa-solid fa-chevron-left"></i>
   </button>
 
-  <div class="filters w-100 py-2 mb-2 d-flex align-items-center">
-    <form id="filterForm" action="/listings/filter" method="GET">
-      <button type="submit" name="category" value="Amazing Pools" class="filter-item btn">
-        <i class="fa-solid fa-water-ladder"></i>
-        <p>Amazing Pools</p>
-      </button>
-      <button type="submit" name="category" value="Camping" class="filter-item btn">
-        <i class="fa-solid fa-campground"></i>
-        <p>Camping</p>
-      </button>
-      <button type="submit" name="category" value="Iconic Cities" class="filter-item btn">
-        <i class="fa-solid fa-city"></i>
-        <p>Iconic Cities</p>
-      </button>
-      <button type="submit" name="category" value="Mountains" class="filter-item btn">
-        <i class="fa-solid fa-mountain-sun"></i>
-        <p>Mountains</p>
-      </button>
-      <button type="submit" name="category" value="Castles" class="filter-item btn">
-        <i class="fa-brands fa-fort-awesome"></i>
-        <p>Castles</p>
-      </button>
-      <button type="submit" name="category" value="Trending" class="filter-item btn">
-        <i class="fa-solid fa-fire"></i>
-        <p>Trending</p>
-      </button>
-      <button type="submit" name="category" value="Luxe" class="filter-item btn">
-        <i class="fa-solid fa-gem"></i>
-        <p>Luxe</p>
-      </button>
-      <button type="submit" name="category" value="Farms" class="filter-item btn">
-        <i class="fa-solid fa-tractor"></i>
-        <p>Farms</p>
-      </button>
-      <button type="submit" name="category" value="Ski-in/out" class="filter-item btn">
-        <i class="fa-solid fa-person-skiing"></i>
-        <p>Ski-in/out</p>
-      </button>
-      <button type="submit" name="category" value="Beach" class="filter-item btn">
-        <i class="fa-solid fa-umbrella-beach"></i>
-        <p>Beach</p>
-      </button>
-      <button type="submit" name="category" value="Tower" class="filter-item btn">
-        <i class="fa-solid fa-tower-observation"></i>
-        <p>Tower</p>
-      </button>
-      <button type="submit" name="category" value="Creative" class="filter-item btn">
-        <i class="fa-solid fa-palette"></i>
-        <p>Creative</p>
-      </button>
-      <button type="submit" name="category" value="Tropical" class="filter-item btn">
-        <i class="fa-solid fa-tree"></i>
-        <p>Tropical</p>
-      </button>
-      <button type="submit" name="category" value="Adapted" class="filter-item btn">
-        <i class="fa-solid fa-wheelchair-move"></i>
-        <p>Adapted</p>
-      </button>
-      <button type="submit" name="category" value="Houseboats" class="filter-item btn">
-        <i class="fa-solid fa-ship"></i>
-        <p>Houseboats</p>
-      </button>
-      <button type="submit" name="category" value="Arctic" class="filter-item btn">
-        <i class="fa-regular fa-snowflake"></i>
-        <p>Arctic</p>
-      </button>
-      <button type="submit" name="category" value="Igloo" class="filter-item btn">
-        <i class="fa-solid fa-igloo"></i>
-        <p>Igloo</p>
-      </button>
-    </form>
-
+  <div class="filters" id="filtersTrack">
+    <button type="submit" form="filterForm" name="category" value="Amazing Pools" class="filter-item">
+      <i class="fa-solid fa-water-ladder"></i>
+      <span>Amazing Pools</span>
+    </button>
+    <button type="submit" form="filterForm" name="category" value="Camping" class="filter-item">
+      <i class="fa-solid fa-campground"></i>
+      <span>Camping</span>
+    </button>
+    <button type="submit" form="filterForm" name="category" value="Iconic Cities" class="filter-item">
+      <i class="fa-solid fa-city"></i>
+      <span>Iconic Cities</span>
+    </button>
+    <button type="submit" form="filterForm" name="category" value="Mountains" class="filter-item">
+      <i class="fa-solid fa-mountain-sun"></i>
+      <span>Mountains</span>
+    </button>
+    <button type="submit" form="filterForm" name="category" value="Castles" class="filter-item">
+      <i class="fa-brands fa-fort-awesome"></i>
+      <span>Castles</span>
+    </button>
+    <button type="submit" form="filterForm" name="category" value="Trending" class="filter-item">
+      <i class="fa-solid fa-fire"></i>
+      <span>Trending</span>
+    </button>
+    <button type="submit" form="filterForm" name="category" value="Luxe" class="filter-item">
+      <i class="fa-solid fa-gem"></i>
+      <span>Luxe</span>
+    </button>
+    <button type="submit" form="filterForm" name="category" value="Farms" class="filter-item">
+      <i class="fa-solid fa-tractor"></i>
+      <span>Farms</span>
+    </button>
+    <button type="submit" form="filterForm" name="category" value="Ski-in/out" class="filter-item">
+      <i class="fa-solid fa-person-skiing"></i>
+      <span>Ski-in/out</span>
+    </button>
+    <button type="submit" form="filterForm" name="category" value="Beach" class="filter-item">
+      <i class="fa-solid fa-umbrella-beach"></i>
+      <span>Beach</span>
+    </button>
+    <button type="submit" form="filterForm" name="category" value="Tower" class="filter-item">
+      <i class="fa-solid fa-tower-observation"></i>
+      <span>Tower</span>
+    </button>
+    <button type="submit" form="filterForm" name="category" value="Creative" class="filter-item">
+      <i class="fa-solid fa-palette"></i>
+      <span>Creative</span>
+    </button>
+    <button type="submit" form="filterForm" name="category" value="Tropical" class="filter-item">
+      <i class="fa-solid fa-tree"></i>
+      <span>Tropical</span>
+    </button>
+    <button type="submit" form="filterForm" name="category" value="Adapted" class="filter-item">
+      <i class="fa-solid fa-wheelchair-move"></i>
+      <span>Adapted</span>
+    </button>
+    <button type="submit" form="filterForm" name="category" value="Houseboats" class="filter-item">
+      <i class="fa-solid fa-ship"></i>
+      <span>Houseboats</span>
+    </button>
+    <button type="submit" form="filterForm" name="category" value="Arctic" class="filter-item">
+      <i class="fa-regular fa-snowflake"></i>
+      <span>Arctic</span>
+    </button>
+    <button type="submit" form="filterForm" name="category" value="Igloo" class="filter-item">
+      <i class="fa-solid fa-igloo"></i>
+      <span>Igloo</span>
+    </button>
   </div>
 
-  <button class="scroll-btn rounded-circle px-2" onclick="scrollFilters(1)">
+  <button class="scroll-btn" id="scrollRight" onclick="scrollFilters(1)" aria-label="Scroll right">
     <i class="fa-solid fa-chevron-right"></i>
   </button>
 </div>
 
-<script>
-  // scrolling of filters
-  function scrollFilters(direction) {
-    const filters = document.querySelector('.filters');
-    const scrollAmount = 200;
-    filters.scrollLeft += direction * scrollAmount;
-  }
-</script>
+<form id="filterForm" action="/listings/filter" method="GET" style="display:none;"></form>

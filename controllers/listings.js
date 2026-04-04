@@ -67,25 +67,24 @@ module.exports.createListing = async (req, res) => {
     return res.redirect("/listings/new"); // Redirect to the form or wherever appropriate
   }
 
-  if (!req.file) {
-    req.flash("error", "Please upload an image for the listing.");
-    return res.redirect("/listings/new");
-  }
-
   let uploadResult;
-  try {
-    uploadResult = await uploadListingImage(req.file);
-  } catch (err) {
-    req.flash("error", "Image upload failed. Please try again.");
-    return res.redirect("/listings/new");
+  if (req.file) {
+    try {
+      uploadResult = await uploadListingImage(req.file);
+    } catch (err) {
+      req.flash("error", "Image upload failed. Please try again.");
+      return res.redirect("/listings/new");
+    }
   }
 
   const newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
-  newListing.image = {
-    url: uploadResult.secure_url || uploadResult.url,
-    filename: uploadResult.public_id,
-  };
+  if (uploadResult) {
+    newListing.image = {
+      url: uploadResult.secure_url || uploadResult.url,
+      filename: uploadResult.public_id,
+    };
+  }
   newListing.geometry = response.body.features[0].geometry;
 
   let savedListing = await newListing.save();
@@ -103,8 +102,10 @@ module.exports.renderEditForm = async (req, res) => {
     req.flash("error", "Listing you requested for does not exist!");
     return res.redirect("/listings");
   } else {
-    let originalImgUrl = listing.image.url;
-    originalImgUrl = originalImgUrl.replace("/upload", "/upload/h_250,w_250");
+    let originalImgUrl = listing.image?.url;
+    if (originalImgUrl) {
+      originalImgUrl = originalImgUrl.replace("/upload", "/upload/h_250,w_250");
+    }
     res.render("listings/edit.ejs", { listing, originalImgUrl });
   }
 };

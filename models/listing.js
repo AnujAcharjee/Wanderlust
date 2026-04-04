@@ -11,16 +11,9 @@ const listingSchema = new Schema({
   image: {
     filename: {
       type: String,
-      default: "defaultimage",
     },
     url: {
       type: String,
-      default:
-        "https://images.unsplash.com/photo-1625505826533-5c80aca7d157?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGdvYXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
-      set: (v) =>
-        v === ""
-          ? "https://images.unsplash.com/photo-1625505826533-5c80aca7d157?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGdvYXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
-          : v,
     },
   },
   price: Number,
@@ -28,7 +21,7 @@ const listingSchema = new Schema({
   country: String,
   region: {
     type: String,
-    // // required: true,
+    // required: true,
     lowercase: true,
     enum: [
       "europe",
@@ -65,7 +58,6 @@ const listingSchema = new Schema({
     },
   },
 });
-
 
 // mongoose mid.ware --> to Delete all reviews when a listing is deleted
 listingSchema.post("findOneAndDelete", async (listing) => {
